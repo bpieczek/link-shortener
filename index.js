@@ -83,10 +83,7 @@ app.use((error, req, res, next) => {
   }
   res.json({
     message: error.message,
-    stack:
-      process.env.NODE_ENV === "production"
-        ? "🔥Coś sie wyjebało na plecki🔥"
-        : error.stack,
+    stack: error.stack,
   });
 });
 const port = process.env.PORT || 6969;
