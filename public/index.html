@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./images/lish-website-favicon-color.png"
+    />
     <title>LiSh</title>
 
     <link rel="stylesheet" href="./styles/style.min.css" />
@@ -51,7 +55,7 @@
               v-model="created"
               readonly
             />
-            <button class="copy" role="button">
+            <button class="copy" role="button" @click="copyLink()">
               <img src="./images/clone-solid.svg" alt="Copy" />
             </button>
           </label>
@@ -74,13 +78,16 @@
           </p>
 
           <h3 class="h2">When use it?</h3>
+
           <ul>
             <li>Sending links via chats/SMS's</li>
             <li>Sharing links on social media</li>
-            <li>Lorem ipsum dolor sit.</li>
-            <li>Obcaecati ullam facere doloremque.</li>
-            <li>Fuga maiores fugit quaerat?</li>
+            <li>Rewriting links from other device</li>
+            <li>Making URLs Friendly and Memorable</li>
+            <li>Crating custom links</li>
           </ul>
+          <h3 class="h1 ls">Remember!</h3>
+          <h3 class="h1">Each link is active for 12 hours!</h3>
         </section>
         <footer>
           <p>Programmed by: <span class="inc">Bartosz.INC</span></p>

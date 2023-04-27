@@ -42,5 +42,12 @@ const app = new Vue({
 
       this.created = `${window.location.href + get.slug}`;
     },
+    copyLink() {
+      let copyText = document.querySelector("#finalUrl");
+
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(copyText.value);
+    },
   },
 });
