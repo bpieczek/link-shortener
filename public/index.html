@@ -9,7 +9,21 @@
   </head>
   <body>
     <header>
-      <h1>Short url</h1>
+      <h1>LiSh</h1>
     </header>
+    <main id="app">
+      <form @submit.prevent="createUrl()">
+        <label for="url">Url:</label>
+        <input v-model="url" name="url" id="url"/>
+        <label for="slug">Slug:</label>
+        <input v-model="slug" name="slug" id="slug"/>
+        <button type="submit">Create</button>
+      </form>
+      <h2 v-if="created">
+        {{created}}
+      </h2>
+    </main>
+    <script src="./vue.js"></script>
+    <script src="./app.js"></script>
   </body>
 </html>

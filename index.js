@@ -8,15 +8,19 @@ const { nanoid } = require("nanoid");
 const app = express();
 const monk = require("monk");
 
-const db = monk(process.env.MONGO_URL);
+const db = monk(process.env.MONGO_URL)
 const urls = db.get("links");
 urls.createIndex({ slug: 1 }, { unique: true });
+db.then(() => {
+  console.log(`Database connected`)
+})
 
-app.use(helmet());
+app.use(helmet({contentSecurityPolicy: false}));
 app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
 app.use(express.static("./public"));
+
 
 const schema = yup.object().shape({
   slug: yup
@@ -29,19 +33,13 @@ const schema = yup.object().shape({
 app.post("/url", async (req, res, next) => {
   let { slug, url } = req.body;
   try {
-    await schema.validate({
+    if (!slug)
+      slug = nanoid(5);
+    
+      await schema.validate({
       slug,
       url,
     });
-
-    if (!slug) {
-      slug = nanoid(5);
-      let existing = await urls.findOne({ slug });
-      while (existing) {
-        slug = nanoid(5);
-        existing = await urls.findOne({ slug });
-      }
-    }
 
     const existing = await urls.findOne({ slug });
     if (existing) {
@@ -67,9 +65,11 @@ app.get("/:id", async (req, res) => {
   try {
     const url = await urls.findOne({ slug });
     if (url) {
+      console.log("Dziala");
       res.redirect(url.url);
-    }
+    }else{
     res.redirect(`/?error=${slug} not found`);
+    }
   } catch (error) {
     res.redirect(`/?error=Link not found`);
   }
@@ -85,6 +85,10 @@ app.use((error, req, res, next) => {
     message: error.message,
     stack: error.stack,
   });
+  console.log(  res.json({
+    message: error.message,
+    stack: error.stack,
+  }))
 });
 const port = process.env.PORT || 6969;
 
