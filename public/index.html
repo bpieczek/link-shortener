@@ -55,7 +55,7 @@
               v-model="created"
               readonly
             />
-            <button class="copy" role="button" @click="copyLink()">
+            <button class="copy" role="button" @click.prevent="copyLink()">
               <img src="./images/clone-solid.svg" alt="Copy" />
             </button>
           </label>
