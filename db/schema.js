@@ -6,6 +6,7 @@ const schema = yup.object().shape({
     .trim()
     .matches(/[\w\-]/i),
   url: yup.string().trim().url().required(),
+  ServerCreateTime: yup.date(),
 });
 
 module.exports = schema;

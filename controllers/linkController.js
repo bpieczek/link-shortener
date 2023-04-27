@@ -5,6 +5,9 @@ const schema = require("../db/schema.js");
 class linkController {
   async saveLink(req, res, next) {
     let { slug, url } = req.body;
+
+    let createTime = new Date(Date.now());
+
     try {
       if (!slug) {
         slug = nanoid(5).toLowerCase();
@@ -16,13 +19,13 @@ class linkController {
         }
       }
 
-      await schema.validate({ slug, url });
+      await schema.validate({ slug, url, createTime });
 
       const existing = await urls.findOne({ slug });
 
       if (existing) throw new Error("Slug in use");
 
-      const newUrl = { url, slug };
+      const newUrl = { url, slug, createTime };
 
       const created = await urls.insert(newUrl);
       res.json(created);

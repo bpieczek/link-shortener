@@ -4,26 +4,89 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+
+    <title>LiSh</title>
+
+    <link rel="stylesheet" href="./styles/style.min.css" />
+
+    <script src="./scripts/vue.js" defer></script>
+    <script src="./scripts/app.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1>LiSh</h1>
-    </header>
     <main id="app">
-      <form @submit.prevent="createUrl()">
-        <label for="url">Url:</label>
-        <input v-model="url" name="url" id="url"/>
-        <label for="slug">Slug:</label>
-        <input v-model="slug" name="slug" id="slug"/>
-        <button type="submit">Create</button>
-      </form>
-      <h2 v-if="created">
-        {{created}}
-      </h2>
+      <section class="app">
+        <header>
+          <h1 class="h1 logo">LiSh</h1>
+          <p class="subtitle">A <span class="ls">Link-Shortening</span> tool</p>
+        </header>
+
+        <form @submit.prevent="createUrl()">
+          <label>
+            <span>Adress url:</span>
+            <input v-model="url" name="url" id="url" required placeholder=" " />
+            <span class="error-span" id="url-error"></span>
+          </label>
+
+          <div>
+            <label>
+              <span>
+                Slug
+                <span class="ls">*</span>
+                :
+              </span>
+              <input v-model="slug" name="slug" id="slug" placeholder=" " />
+            </label>
+            <p class="small-text">
+              <span class="ls">*</span>That bit at the end of link
+            </p>
+          </div>
+
+          <button type="submit" id="submit">Shorten</button>
+
+          <label class="link-label">
+            <input
+              type="text"
+              name="finalUrl"
+              id="finalUrl"
+              v-model="created"
+              readonly
+            />
+            <button class="copy" role="button">
+              <img src="./images/clone-solid.svg" alt="Copy" />
+            </button>
+          </label>
+        </form>
+
+        <div class="filler"></div>
+      </section>
+
+      <section class="container">
+        <section class="about">
+          <h2 class="h1">It's quick, it's easy and it's free!</h2>
+          <p class="small-text subtitle">
+            Like pouring river water into your socks
+          </p>
+
+          <h3 class="h2">Why use it?</h3>
+          <p>
+            It's quick, it's easy and it's free <br />
+            <span class="small-text">Are you even listening?</span>
+          </p>
+
+          <h3 class="h2">When use it?</h3>
+          <ul>
+            <li>Sending links via chats/SMS's</li>
+            <li>Sharing links on social media</li>
+            <li>Lorem ipsum dolor sit.</li>
+            <li>Obcaecati ullam facere doloremque.</li>
+            <li>Fuga maiores fugit quaerat?</li>
+          </ul>
+        </section>
+        <footer>
+          <p>Programmed by: <span class="inc">Bartosz.INC</span></p>
+          <p>Designed by: <span class="inc">Sylwek.INC</span></p>
+        </footer>
+      </section>
     </main>
-    <script src="./vue.js"></script>
-    <script src="./app.js"></script>
   </body>
 </html>
