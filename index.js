@@ -8,7 +8,9 @@ const { port } = require("./config.js");
 
 const app = express();
 
-app.use(helmet({ contentSecurityPolicy: false }));
+app.use(
+  helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false })
+);
 app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
