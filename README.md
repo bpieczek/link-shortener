@@ -36,7 +36,7 @@ MONGO_URL=your_mongo_database
 3. **Start server**
 
 ```bash
-node server/index.js
+npn run dev
 ```
 
 ## Frontend Features
