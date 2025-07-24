@@ -25,8 +25,6 @@ LiSh is a minimalist link shortening service with automatic expiration. Short li
 npm install
 ```
 
-````
-
 2. **Configure environment**
 
 ```bash
@@ -61,4 +59,3 @@ urls.createIndex({ createTime: 1 }, { expireAfterSeconds: 43_200 });
 
 - **Development**: [bpieczek](https://github.com/bpieczek)
 - **Design**: [dOnTaSkAbOuTmYnAmE](https://github.com/dOnTaSkAbOuTmYnAmE)
-````
