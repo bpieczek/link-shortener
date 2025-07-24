@@ -1,6 +1,3 @@
-Based on the code you've shared, here's a comprehensive README that accurately reflects your project structure and functionality:
-
-````markdown
 # LiSh - Link Shortener
 
 [![Live Demo](https://img.shields.io/badge/demo-online-green?style=for-the-badge&logo=render)](https://lish-wdaw.onrender.com)
@@ -27,6 +24,7 @@ LiSh is a minimalist link shortening service with automatic expiration. Short li
 ```bash
 npm install
 ```
+
 ````
 
 2. **Configure environment**
@@ -63,3 +61,4 @@ urls.createIndex({ createTime: 1 }, { expireAfterSeconds: 43_200 });
 
 - **Development**: [bpieczek](https://github.com/bpieczek)
 - **Design**: [dOnTaSkAbOuTmYnAmE](https://github.com/dOnTaSkAbOuTmYnAmE)
+````
