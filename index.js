@@ -25,6 +25,8 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message, stack: error.stack });
 });
 
+app.get("/health", (req, res) => res.status(200).send("OK"));
+
 app.listen(port, () => {
   console.log(`app listening on port: ${port}`);
 });
